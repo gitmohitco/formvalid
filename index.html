@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .warp {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.607);
+        }
+
+        form {
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #ccc;
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+            border-radius: 8px;
+        }
+
+        form #f-name {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 1rem;
+        }
+
+        input {
+            padding: 5px 7px;
+            font-size: 1rem;
+            border-radius: 4px;
+            outline: 1px solid #ccc;
+            border: none;
+        }
+
+        #btn {
+            border-radius: 4px;
+            margin-top: 7px;
+            border: none;
+            padding: 8px;
+            font-size: 1rem;
+            color: #818181;
+            font-weight: 500;
+        }
+
+        #msg1,
+        #msg2,
+        #msg3,
+        #msg4,
+        #msg5,
+        #msg6 {
+            font-size: 0.5rem;
+            color: red;
+        }
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+    </style>
+</head>
+
+<body>
+    <div class="warp">
+        <form>
+            <div id="f-name">
+                <label for="fName">First Name:</label>
+                <input type="text" name="FName" id="fName">
+                <span id="msg1"></span>
+            </div>
+            <div id="f-name">
+                <label for="lName">Last Name:</label>
+                <input type="text" name="LName" id="lName">
+                <span id="msg2"></span>
+            </div>
+            <div id="f-name">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email">
+                <span id="msg3"></span>
+            </div>
+            <div id="f-name">
+                <label for="pass">Password:</label>
+                <input type="password" name="password" id="pass">
+                <span id="msg4"></span>
+            </div>
+            <div id="f-name">
+                <label for="cpass">Confirm Password:</label>
+                <input type="password" name="cpass" id="cpass">
+                <span id="msg5"></span>
+            </div>
+            <button id="btn" onclick="tap()" >Submit</button>
+        </form>
+    </div>
+    <script>
+        let mainDiv = document.getElementById('f-name');
+        let email = document.getElementById('email');
+        let fname = document.getElementById('fName');
+        let lname = document.getElementById('lName');
+        let pass = document.getElementById('pass');
+        let cpass = document.getElementById("cpass");
+        function tap(){
+            const msg = document.getElementById('msg');
+            try {
+                if (fname.value == '') {
+                    // msg.innerHTML = 'Please enter your first name!';
+                    // console.log('first name')
+                    alert(`Please enter your first name!`);
+                }
+                else if (lname.value == '') {
+                    // msg.innerHTML = 'Please enter your last name!';
+                    // console.log('last name');
+                    alert(`Please enter your last name!`);
+                }
+                else if (email.value == '') {
+                    // msg.innerHTML = "Please provide an Email address!";
+                    // console.log('email');
+                    alert(`Please provide an Email address!`);
+                }
+                else if (pass.value == '') {
+                    // msg.innerHTML = "Please provide your password!";
+                    // console.log('password');
+                    alert(`Please provide your password!`);
+                }
+                else if (pass.value.length < 6) {
+                    // msg.innerHTML = "Your password should have at least six characters!";
+                    // console.log('less than 6 chars');
+                    alert(`Your password should have at least six characters!`);
+                }
+                else if (pass.value.length >= 12) {
+                    // msg.innerHTML = "Your password should not have more than twelve characters!"
+                    // console.log('more than 12 chars');
+                    alert(`Your password should not have more than twelve characters!`)
+                }
+                // else if(pass.value!==[A-Za-z0-9]+$){
+                //     msg.innerHTML="Your password should contain letters, numbers and special character!";
+                // }
+                else if (pass.value !== cpass.value) {
+                    // msg.innerHTML = "Both passwords should match!";
+                    // console.log('not match');
+                    alert(`Both passwords should match!`);
+                }
+                else if (cpass.value == '') {
+                    // msg.innerHTML = "Please confirm your password!";
+                    // console.log('cpass');
+                    alert(`Please confirm your password!`)
+                }
+                else {
+                    alert(`Successfully Submitted "${fname.value}"`);
+                }
+            }
+            catch (err) {
+                console.error("Error: ", err);
+            }
+            //let regx=/^[A-Za-z0-9]+$/;
+        }
+    </script>
+</body>
+
+</html>
